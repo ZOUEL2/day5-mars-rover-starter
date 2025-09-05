@@ -26,5 +26,23 @@ public class MarsRoverTest {
         assertEquals(expected, result);
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "0, 0, N, 0:0:W",
+            "1, 1, W, 1:1:S",
+            "2, 2, S, 2:2:E",
+            "3, 3, E, 3:3:N"
+    })
+    void should_turnLeft_when_executeCommand_given_L(int x, int y, Direction direction, String expected) {
+        Location location = new Location(x, y, direction);
+
+        MarsRover marsRover = new MarsRover(location);
+
+        String result = marsRover.executeCommand(Command.L);
+
+        assertEquals(expected, result);
+
+    }
+
 
 }
