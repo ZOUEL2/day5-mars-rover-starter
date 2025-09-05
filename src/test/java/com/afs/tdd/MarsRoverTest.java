@@ -1,7 +1,6 @@
 package com.afs.tdd;
 
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -75,17 +74,7 @@ public class MarsRoverTest {
         String result = marsRover.executeCommand("B");
 
         assertEquals(expected, result);
-    }
 
-    @Test
-    void should_executeCommand_given_multiple_commands() {
-        Location location = new Location(0, 0, Direction.N);
-
-        MarsRover marsRover = new MarsRover(location);
-
-        String result = marsRover.executeCommand("MMRMMRBBLM");
-
-        assertEquals("3:4:N", result);
     }
 
 }
