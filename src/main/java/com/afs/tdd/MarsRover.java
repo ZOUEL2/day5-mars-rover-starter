@@ -13,12 +13,19 @@ public class MarsRover {
     }
 
     public String executeCommand(Command command) {
-        if (command == Command.M) {
-            move();
-        } else if (command == Command.L) {
-            turnLeft();
-        } else if (command == Command.R) {
-            turnRight();
+        switch (command) {
+            case M:
+                move();
+                break;
+            case L:
+                turnLeft();
+                break;
+            case R:
+                turnRight();
+                break;
+            case B:
+                moveBack();
+                break;
         }
 
         return location.getLocationX() + ":" +
@@ -73,6 +80,23 @@ public class MarsRover {
                 break;
             case S:
                 location.setDirection(Direction.W);
+                break;
+        }
+    }
+
+    private void moveBack() {
+        switch (location.getDirection()) {
+            case N:
+                location.setLocationY(location.getLocationY() - 1);
+                break;
+            case W:
+                location.setLocationX(location.getLocationX() + 1);
+                break;
+            case E:
+                location.setLocationX(location.getLocationX() - 1);
+                break;
+            case S:
+                location.setLocationY(location.getLocationY() + 1);
                 break;
         }
     }
