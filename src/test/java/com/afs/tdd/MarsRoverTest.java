@@ -20,7 +20,7 @@ public class MarsRoverTest {
 
         MarsRover marsRover = new MarsRover(location);
 
-        String result = marsRover.executeCommand(Command.M);
+        String result = marsRover.executeCommand("M");
 
         assertEquals(expected, result);
     }
@@ -37,7 +37,7 @@ public class MarsRoverTest {
 
         MarsRover marsRover = new MarsRover(location);
 
-        String result = marsRover.executeCommand(Command.L);
+        String result = marsRover.executeCommand("L");
 
         assertEquals(expected, result);
     }
@@ -54,7 +54,7 @@ public class MarsRoverTest {
 
         MarsRover marsRover = new MarsRover(location);
 
-        String result = marsRover.executeCommand(Command.R);
+        String result = marsRover.executeCommand("R");
 
         assertEquals(expected, result);
     }
@@ -71,7 +71,7 @@ public class MarsRoverTest {
 
         MarsRover marsRover = new MarsRover(location);
 
-        String result = marsRover.executeCommand(Command.B);
+        String result = marsRover.executeCommand("B");
 
         assertEquals(expected, result);
 

@@ -8,12 +8,18 @@ public class MarsRover {
         this.location = location;
     }
 
-    public Location getLocation() {
-        return location;
+    public String executeCommand(String commands) {
+       commands.codePoints()
+               .mapToObj(command -> (char) command)
+               .forEach(this::processCommand);
+
+        return location.getLocationX() + ":" +
+                location.getLocationY() + ":" +
+                location.getDirection();
     }
 
-    public String executeCommand(Command command) {
-        switch (command) {
+    private void processCommand(char command) {
+        switch (Command.valueOf(String.valueOf(command))) {
             case M:
                 move();
                 break;
@@ -28,9 +34,6 @@ public class MarsRover {
                 break;
         }
 
-        return location.getLocationX() + ":" +
-                location.getLocationY() + ":" +
-                location.getDirection();
     }
 
     private void move() {
@@ -100,6 +103,5 @@ public class MarsRover {
                 break;
         }
     }
-
 
 }
