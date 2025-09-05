@@ -2,7 +2,7 @@ package com.afs.tdd;
 
 public class MarsRover {
 
-    private Location location;
+    private final Location location;
 
     public MarsRover(Location location) {
         this.location = location;
@@ -14,17 +14,17 @@ public class MarsRover {
 
     public String executeCommand(Command command) {
         if (command == Command.M){
-            move(location);
+            move();
+        }else if (command == Command.L){
+            turnLeft();
         }
 
-        StringBuilder result = new StringBuilder();
-        result.append(location.getLocationX()).append(":")
-                .append(location.getLocationY()).append(":")
-                .append(location.getDirection());
-        return result.toString();
+        return location.getLocationX() + ":" +
+                location.getLocationY() + ":" +
+                location.getDirection();
     }
 
-    public void move(Location location) {
+    private void move() {
         switch (location.getDirection()) {
             case N:
                 location.setLocationY(location.getLocationY() + 1);
@@ -37,6 +37,23 @@ public class MarsRover {
                 break;
             case S:
                 location.setLocationY(location.getLocationY() - 1);
+                break;
+        }
+    }
+
+    private void turnLeft() {
+        switch (location.getDirection()) {
+            case N:
+                location.setDirection(Direction.W);
+                break;
+            case W:
+                location.setDirection(Direction.S);
+                break;
+            case E:
+                location.setDirection(Direction.N);
+                break;
+            case S:
+                location.setDirection(Direction.E);
                 break;
         }
     }

@@ -38,4 +38,6 @@ public class Location {
         this.direction = direction;
     }
 
+
+
 }
