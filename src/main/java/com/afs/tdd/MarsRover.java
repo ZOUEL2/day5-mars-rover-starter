@@ -20,87 +20,47 @@ public class MarsRover {
 
     private void processCommand(char command) {
         switch (Command.valueOf(String.valueOf(command))) {
-            case M:
-                move();
-                break;
-            case L:
-                turnLeft();
-                break;
-            case R:
-                turnRight();
-                break;
-            case B:
-                moveBack();
-                break;
+            case M -> move();
+            case L -> turnLeft();
+            case R -> turnRight();
+            case B -> moveBack();
         }
 
     }
 
     private void move() {
         switch (location.getDirection()) {
-            case N:
-                location.setLocationY(location.getLocationY() + 1);
-                break;
-            case W:
-                location.setLocationX(location.getLocationX() - 1);
-                break;
-            case E:
-                location.setLocationX(location.getLocationX() + 1);
-                break;
-            case S:
-                location.setLocationY(location.getLocationY() - 1);
-                break;
+            case N -> location.setLocationY(location.getLocationY() + 1);
+            case W -> location.setLocationX(location.getLocationX() - 1);
+            case E -> location.setLocationX(location.getLocationX() + 1);
+            case S -> location.setLocationY(location.getLocationY() - 1);
         }
     }
 
     private void turnLeft() {
         switch (location.getDirection()) {
-            case N:
-                location.setDirection(Direction.W);
-                break;
-            case W:
-                location.setDirection(Direction.S);
-                break;
-            case E:
-                location.setDirection(Direction.N);
-                break;
-            case S:
-                location.setDirection(Direction.E);
-                break;
+            case N -> location.setDirection(Direction.W);
+            case W -> location.setDirection(Direction.S);
+            case E -> location.setDirection(Direction.N);
+            case S -> location.setDirection(Direction.E);
         }
     }
 
     private void turnRight() {
         switch (location.getDirection()) {
-            case N:
-                location.setDirection(Direction.E);
-                break;
-            case W:
-                location.setDirection(Direction.N);
-                break;
-            case E:
-                location.setDirection(Direction.S);
-                break;
-            case S:
-                location.setDirection(Direction.W);
-                break;
+            case N -> location.setDirection(Direction.E);
+            case W -> location.setDirection(Direction.N);
+            case E -> location.setDirection(Direction.S);
+            case S -> location.setDirection(Direction.W);
         }
     }
 
     private void moveBack() {
         switch (location.getDirection()) {
-            case N:
-                location.setLocationY(location.getLocationY() - 1);
-                break;
-            case W:
-                location.setLocationX(location.getLocationX() + 1);
-                break;
-            case E:
-                location.setLocationX(location.getLocationX() - 1);
-                break;
-            case S:
-                location.setLocationY(location.getLocationY() + 1);
-                break;
+            case N -> location.setLocationY(location.getLocationY() - 1);
+            case W -> location.setLocationX(location.getLocationX() + 1);
+            case E -> location.setLocationX(location.getLocationX() - 1);
+            case S -> location.setLocationY(location.getLocationY() + 1);
         }
     }
 
