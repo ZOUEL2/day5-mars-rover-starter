@@ -2,23 +2,28 @@ package com.afs.tdd;
 
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MarsRoverTest {
 
-    @Test
-    void should_move_when_executeCommand_given_M() {
-        Location location = new Location(0, 0, Direction.N);
+    @ParameterizedTest
+    @CsvSource({
+            "0, 0, N, 0:1:N",
+            "1, 1, E, 2:1:E",
+            "2, 2, S, 2:1:S",
+            "3, 3, W, 2:3:W"
+    })
+    void should_move_when_executeCommand_given_M(int x, int y, Direction direction, String expected) {
+        Location location = new Location(x, y, direction);
+
         MarsRover marsRover = new MarsRover(location);
 
-        marsRover.executeCommand(Command.M);
+        String result = marsRover.executeCommand(Command.M);
 
-        Location nextLocation = new Location(0, 1, Direction.N);
-
-        assertEquals(nextLocation.getLocationX(), marsRover.getLocation().getLocationX());
-        assertEquals(nextLocation.getLocationY(), marsRover.getLocation().getLocationY());
-        assertEquals(nextLocation.getDirection(), marsRover.getLocation().getDirection());
+        assertEquals(expected, result);
     }
 
 
